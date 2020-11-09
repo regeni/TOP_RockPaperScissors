@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+
+
+
+
+<script>
+/*
+Kell három darab opció, kő, papír, olló (arrayal megoldva)
+Kell egy input felület, ahol be lehet vinni, hogy a személy melyiket választja ezek közül, be kell írni és case  sensitivvé tenni.
+A számítógép oldalán kell egy random válasz generáló, véletlenszerűen kiválasztja, hogy kő papír vagy olló legyen.
+playerSelection oldalon csak egy input felületet kell majd megadni valószínűleg, ide nem kell sok kódolás.
+Kell egy funkció, ami magát a játékot lemeccseli (elindítja a computer random folyamatát), miután az emberi user beírta, hogy melyiket választja.
+Csak a konzolban kell megjeleníteni, nem kell megjelenítő felület
+*/
+
+    const options = ["rock", "paper", "scissor"]; // Ez így egyelőre ok!!!
+
+    function computerPlay() {// ez a számítógép választása, random kiválasztja az option arrayből a megfelelőt, és visszaadja a random szót
+        return options[Math.floor(Math.random() * options.length)];
+    } // Ez most jónak tűnik!!
+
+
+    function playerPlay() { // Valahogy meg kellene oldani, hogy az input kívülről érkezzen a funkcióba (nem biztos)
+        let choice = prompt("Choose rock, paper or scissor"); // feldobja az ablakot, ahol be lehet írni a választ szövegesen. különben hibaüzenet. lowercasesíteni kell
+        if (choice === "rock" || "paper" || "scissor") { // biztosítja, hogy a 3 közül valamelyiket lehessen csak beírni --> ez még nem jött össze
+            return choice; // mi legyen a return? Ez számomra nem egyértelmű itt
+        } else {
+            alert("Your answer is not correct, there are only three options: rock, paper and scissors"); // valamiért nem töltődik be
+        }
+    }
+    playerPlay();
+    computerPlay();
+
+    
+
+
+    function playRound(playerSelection, computerSelection) {
+        if (playerSelection === computerSelection) {
+            return "It's a tie!";
+        } else if (playerSelection == "rock" && computerSelection == "scissor") {
+            return "Player win!";
+        } else if (playerSelection == "paper" && computerSelection == "rock") {
+            return "Player win!";
+        } else if (playerSelection == "scissor" && computerSelection == "paper") {
+            return "Player win!";
+        } else {
+            return "Computer win!";
+        }
+    }
+    //let playerSelection = playerPlay()
+    //let computerSelection = computerPlay()
+    console.log(playRound(playerSelection, computerSelection));
+
+    /*
+    const playerSelection = "rock";
+    const computerSelection = computerPlay();
+    console.log(playRound(playerSelection, computerSelection));
+    */
+
+
+
+
+
+</script>
+
+</body>
+</html>
