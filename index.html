@@ -36,8 +36,8 @@ Csak a konzolban kell megjeleníteni, nem kell megjelenítő felület
             alert("Your answer is not correct, there are only three options: rock, paper and scissors"); // valamiért nem töltődik be
         }
     }
-    playerPlay();
-    computerPlay();
+    let playerSelection = playerPlay()
+    let computerSelection = computerPlay()
 
     
 
@@ -55,8 +55,7 @@ Csak a konzolban kell megjeleníteni, nem kell megjelenítő felület
             return "Computer win!";
         }
     }
-    //let playerSelection = playerPlay()
-    //let computerSelection = computerPlay()
+ 
     console.log(playRound(playerSelection, computerSelection));
 
     /*
