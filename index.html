@@ -6,36 +6,26 @@
     <title>Document</title>
 </head>
 <body>
-
-
-
-
-
 <script>
-/*
-Kell három darab opció, kő, papír, olló (arrayal megoldva)
-Kell egy input felület, ahol be lehet vinni, hogy a személy melyiket választja ezek közül, be kell írni és case  sensitivvé tenni.
-A számítógép oldalán kell egy random válasz generáló, véletlenszerűen kiválasztja, hogy kő papír vagy olló legyen.
-playerSelection oldalon csak egy input felületet kell majd megadni valószínűleg, ide nem kell sok kódolás.
-Kell egy funkció, ami magát a játékot lemeccseli (elindítja a computer random folyamatát), miután az emberi user beírta, hogy melyiket választja.
-Csak a konzolban kell megjeleníteni, nem kell megjelenítő felület
-*/
-    
-    function computerPlay() {// ez a számítógép választása, random kiválasztja az option arrayből a megfelelőt, és visszaadja a random szót
-        let options = ["rock", "paper", "scissor"]; // Ez így egyelőre ok!!!
+
+    //This is the computer turn, randomly choose a word from array
+    function computerPlay() {
+        let options = ["rock", "paper", "scissor"];
         return options[Math.floor(Math.random() * options.length)];
-    } // Ez így biztos, hogy jó, letesztelve! Ha külön rakom console.log-ba, akkor mindig más eredményt hoz, ha lefutottom konzolban akkor is
-
-
-    function playerPlay() { // input a Playertől
-        let choice = prompt("Choose rock, paper or scissor").toLowerCase(); // feldobja az ablakot, ahol be lehet írni a választ szövegesen, különben hibaüzenet + lowercase method
-        if ((choice === "rock") || (choice === "paper") || (choice === "scissor")) { // biztosítja, hogy a 3 közül valamelyiket lehessen csak beírni
-        return choice; // visszaadja
-     } else {
-       alert("Your answer is not correct, there are only three options: rock, paper or scissor"); // nem helyes válasz esetén
-     } // tök jó minden, de valamiért az új adatokkal nem frissül a dolog
     }
 
+    /*Player turn. Input from Player with prompt method. Case insesitiveness is done with toLowerCase() method.
+    There is a built in security to choose only rock/paper/scissor. If not, an alert pop up with below message. */
+    function playerPlay() {
+        let choice = prompt("Choose rock, paper or scissor!").toLowerCase();
+        if ((choice === "rock") || (choice === "paper") || (choice === "scissor")) {
+        return choice;
+     } else {
+       alert("Your answer is not correct, there are only three options: rock, paper or scissor");
+     }
+    }
+
+    //I tried to minimaze if/else contitional statement for 5 lines, it is unnecessry to list all "Computer win" option.
     function playRound(playerSelection, computerSelection) {
         if (playerSelection === computerSelection) {
             return "It's a tie!";
@@ -50,17 +40,37 @@ Csak a konzolban kell megjeleníteni, nem kell megjelenítő felület
         }
     }
 
-   console.log(playRound(playerPlay(), computerPlay()));
-   console.log(playRound(playerPlay(), computerPlay()));
-   console.log(playRound(playerPlay(), computerPlay()));
-   console.log(playRound(playerPlay(), computerPlay()));
-   console.log(playRound(playerPlay(), computerPlay()));
-   
+    /*The playRound properties calling "play" functions as the property, I think it is a very good and simple solution.
+    Game function repeating playRound 5 times (beacause i don't know how to loop yet :) ), and displays the solution in the console.*/
+    function game() {
+        console.log(playRound(playerPlay(), computerPlay()));
+        console.log(playRound(playerPlay(), computerPlay()));
+        console.log(playRound(playerPlay(), computerPlay()));
+        console.log(playRound(playerPlay(), computerPlay()));
+        console.log(playRound(playerPlay(), computerPlay()));
+        return;
+        }
+
+    game();
 
 /*
+//MÉG MAJD KI KELL EGÉSZÍTENI AZZAL, HOGY 5X LEJÁTSZÓDJON!
+
 function game() {
-    console.log(playRound(playerPlay(), computerPlay()));
+    let i = playRound(playerPlay(), computerPlay());
+    for (i = 0; i < 5; i++) {
+    console.log(i);
+    }
 }
+*/
+
+/*
+Kell három darab opció, kő, papír, olló (arrayal megoldva)
+Kell egy input felület, ahol be lehet vinni, hogy a személy melyiket választja ezek közül, be kell írni és case  sensitivvé tenni.
+A számítógép oldalán kell egy random válasz generáló, véletlenszerűen kiválasztja, hogy kő papír vagy olló legyen.
+playerSelection oldalon csak egy input felületet kell majd megadni valószínűleg, ide nem kell sok kódolás.
+Kell egy funkció, ami magát a játékot lemeccseli (elindítja a computer random folyamatát), miután az emberi user beírta, hogy melyiket választja.
+Csak a konzolban kell megjeleníteni, nem kell megjelenítő felület
 */
 </script>
 
