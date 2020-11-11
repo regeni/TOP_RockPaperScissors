@@ -20,54 +20,48 @@ playerSelection oldalon csak egy input felületet kell majd megadni valószínű
 Kell egy funkció, ami magát a játékot lemeccseli (elindítja a computer random folyamatát), miután az emberi user beírta, hogy melyiket választja.
 Csak a konzolban kell megjeleníteni, nem kell megjelenítő felület
 */
-
-    const options = ["rock", "paper", "scissor"]; // Ez így egyelőre ok!!!
-
-    function computerPlay() {// ez a számítógép választása, random kiválasztja az option arrayből a megfelelőt, és visszaadja a random szót
-        return options[Math.floor(Math.random() * options.length)];
-    } // Ez most jónak tűnik!!
-
-
-    function playerPlay() { // Valahogy meg kellene oldani, hogy az input kívülről érkezzen a funkcióba (nem biztos)
-        let choice = prompt("Choose rock, paper or scissor"); // feldobja az ablakot, ahol be lehet írni a választ szövegesen. különben hibaüzenet. lowercasesíteni kell
-        if (choice === "rock" || "paper" || "scissor") { // biztosítja, hogy a 3 közül valamelyiket lehessen csak beírni --> ez még nem jött össze
-            return choice; // mi legyen a return? Ez számomra nem egyértelmű itt
-        } else {
-            alert("Your answer is not correct, there are only three options: rock, paper and scissors"); // valamiért nem töltődik be
-        }
-    }
-    let playerSelection = playerPlay()
-    let computerSelection = computerPlay()
-
     
+    function computerPlay() {// ez a számítógép választása, random kiválasztja az option arrayből a megfelelőt, és visszaadja a random szót
+        let options = ["rock", "paper", "scissor"]; // Ez így egyelőre ok!!!
+        return options[Math.floor(Math.random() * options.length)];
+    } // Ez így biztos, hogy jó, letesztelve! Ha külön rakom console.log-ba, akkor mindig más eredményt hoz, ha lefutottom konzolban akkor is
 
+
+    function playerPlay() { // input a Playertől
+        let choice = prompt("Choose rock, paper or scissor").toLowerCase(); // feldobja az ablakot, ahol be lehet írni a választ szövegesen, különben hibaüzenet + lowercase method
+        if ((choice === "rock") || (choice === "paper") || (choice === "scissor")) { // biztosítja, hogy a 3 közül valamelyiket lehessen csak beírni
+        return choice; // visszaadja
+     } else {
+       alert("Your answer is not correct, there are only three options: rock, paper or scissor"); // nem helyes válasz esetén
+     } // tök jó minden, de valamiért az új adatokkal nem frissül a dolog
+    }
 
     function playRound(playerSelection, computerSelection) {
         if (playerSelection === computerSelection) {
             return "It's a tie!";
-        } else if (playerSelection == "rock" && computerSelection == "scissor") {
+        } else if ((playerSelection === "rock") && (computerSelection === "scissor")) {
             return "Player win!";
-        } else if (playerSelection == "paper" && computerSelection == "rock") {
+        } else if ((playerSelection === "paper") && (computerSelection === "rock")) {
             return "Player win!";
-        } else if (playerSelection == "scissor" && computerSelection == "paper") {
+        } else if ((playerSelection === "scissor") && (computerSelection === "paper")) {
             return "Player win!";
         } else {
             return "Computer win!";
         }
     }
- 
-    console.log(playRound(playerSelection, computerSelection));
 
-    /*
-    const playerSelection = "rock";
-    const computerSelection = computerPlay();
-    console.log(playRound(playerSelection, computerSelection));
-    */
+   console.log(playRound(playerPlay(), computerPlay()));
+   console.log(playRound(playerPlay(), computerPlay()));
+   console.log(playRound(playerPlay(), computerPlay()));
+   console.log(playRound(playerPlay(), computerPlay()));
+   console.log(playRound(playerPlay(), computerPlay()));
+   
 
-
-
-
-
+/*
+function game() {
+    console.log(playRound(playerPlay(), computerPlay()));
+}
+*/
 </script>
 
 </body>
