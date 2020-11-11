@@ -1,2 +1,2 @@
 # TOP_RockPaperScissors
-Rock, paper, scissors feladat TOP-ban.
+TOP rock, paper, scissors project.
