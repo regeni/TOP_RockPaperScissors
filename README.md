@@ -1,2 +1,2 @@
 # TOP_RockPaperScissors
-TOP rock, paper, scissors project.
+TOP rock, paper, scissor project.
